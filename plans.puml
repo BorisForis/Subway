@@ -1,0 +1,45 @@
+@startuml
+
+class Restaurant {
+    - name : String
+    - orderedItems : List<OrderItem>
+
+    +addNewOrders : void
+    +calculatePriceOfAllOrders : double
+}
+
+abstract class OrderItem {
+    - price : double
+}
+
+class Drink {
+    - flavor : Flavors
+}
+
+class Sandwich {
+    - listOfIngredients : List<Ingredient>
+    - price : double
+
+    +calculatingPrice : double
+}
+
+class Ingredient {
+    -name : String
+    -price : double
+}
+
+enum Flavors{
+    -CocaCola
+    -Fanta
+    -IceTea
+}
+
+Restaurant o-- OrderItem
+OrderItem o-- Drink
+OrderItem o-- Sandwich
+
+Drink <|-- Flavors
+Sandwich <|-- Ingredient
+
+
+@enduml
